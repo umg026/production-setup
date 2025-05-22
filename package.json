@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch src --ext ts --exec node --no-warnings --loader ts-node/esm src/index.ts"
+    "test": "bun test.ts",
+    "dev": "nodemon --watch src --ext ts --exec node --no-warnings --loader ts-node/esm src/index.ts",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
     "nodemon": "^3.1.10"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
