@@ -5,8 +5,10 @@
   "main": "index.ts",
   "scripts": {
     "test": "bun test.ts",
-    "dev": "nodemon --watch src --ext ts --exec node --no-warnings --loader ts-node/esm src/index.ts",
-    "prepare": "husky"
+    "build": "npx tsc",
+    "dev": "nodemon --watch src --ext ts --exec node --no-warnings --loader ts-node/esm src/server.ts",
+    "start": "node dist/server.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -20,14 +22,31 @@
   "homepage": "https://github.com/umg026/production-setup#readme",
   "description": "",
   "dependencies": {
+    "@types/express": "^5.0.2",
+    "@types/node": "^22.15.21",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "nodemon": "^3.1.10"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/js": "^9.27.0",
+    "eslint": "^9.27.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "bunx eslint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "bun run lint-staged"
+    }
   }
 }
