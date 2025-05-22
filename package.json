@@ -8,7 +8,14 @@
     "build": "npx tsc",
     "dev": "nodemon --watch src --ext ts --exec node --no-warnings --loader ts-node/esm src/server.ts",
     "start": "node dist/server.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint":"eslint .",
+    "lint:fix":"eslint . --fix",
+    "lint-staged": {
+      "*.ts": [
+        "bun run lint:fix"
+      ]
+    }
   },
   "repository": {
     "type": "git",
