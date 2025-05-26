@@ -1,61 +1,30 @@
 {
-  "name": "production-node",
-  "type": "module",
-  "version": "1.0.0",
-  "main": "index.ts",
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "bun test.ts",
-    "build": "npx tsc",
-    "dev": "cross-env NODE_ENV=development nodemon --watch src --ext ts --exec node --no-warnings --loader ts-node/esm src/server.ts",
-    "prod": "cross-env NODE_ENV=production node dist/server.js",
-    "prepare": "husky install",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "lint-staged": {
-      "*.ts": [
-        "bun run lint:fix"
-      ]
-    }
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "husky"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/umg026/production-setup.git"
-  },
-  "author": "Umang",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/umg026/production-setup/issues"
-  },
-  "homepage": "https://github.com/umg026/production-setup#readme",
-  "description": "",
   "dependencies": {
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.5.0",
-    "dotenv-flow": "^4.1.0",
-    "express": "^5.1.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next": "15.3.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@eslint/js": "^9.27.0",
-    "@types/express": "^5.0.2",
-    "@types/node": "^22.15.21",
-    "eslint": "^9.27.0",
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.2",
     "husky": "^9.1.7",
-    "lint-staged": "^16.0.0",
-    "nodemon": "^3.1.10",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.32.1"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "bunx eslint"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "bun run lint-staged"
-    }
+    "sass": "^1.89.0",
+    "typescript": "^5"
   }
 }
